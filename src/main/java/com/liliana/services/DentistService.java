@@ -1,9 +1,9 @@
-package services;
+package com.liliana.services;
 
-import domain.Dentist;
+import com.liliana.domain.Dentist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.DentistRepository;
+import com.liliana.repository.DentistRepository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package repository;
+package com.liliana.repository;
 
-import domain.Dentist;
+import com.liliana.domain.Dentist;
 import org.springframework.data.repository.CrudRepository;
 
 public interface DentistRepository extends CrudRepository<Dentist, Integer> {

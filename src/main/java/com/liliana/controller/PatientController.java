@@ -1,15 +1,14 @@
-package controller;
+package com.liliana.controller;
 
-import domain.Patient;
+import com.liliana.domain.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import services.PatientService;
+import com.liliana.services.PatientService;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("patients")
 public class PatientController {
     @Autowired
     private final PatientService patientService;
@@ -19,6 +18,10 @@ public class PatientController {
     }
 
     @GetMapping("/patient")
+    public String WelcomeDentist(){
+        return "Welcome, dear dentist";
+    }
+    @GetMapping("/patients")
     private List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }
@@ -41,7 +44,7 @@ public class PatientController {
         return patient.getId();
     }
 
-    @PutMapping("/books")
+    @PutMapping("patients")
     private Patient update(@RequestBody Patient patient)
     {
         patientService.saveOrUpdate(patient);
