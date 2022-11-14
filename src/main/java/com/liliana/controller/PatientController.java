@@ -2,25 +2,25 @@ package com.liliana.controller;
 
 import com.liliana.domain.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.liliana.services.PatientService;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/patients")
 public class PatientController {
     @Autowired
-    private final PatientService patientService;
+    private PatientService patientService;
 
-    public PatientController(PatientService patientService) {
-        this.patientService = patientService;
-    }
-
-    @GetMapping("/patient")
+    @GetMapping("/hi-patient")
     public String WelcomeDentist(){
-        return "Welcome, dear dentist";
+        String hello = "Welcome, dear patient";
+        return hello;
     }
+
     @GetMapping("/patients")
     private List<Patient> getAllPatients() {
         return patientService.getAllPatients();
@@ -32,19 +32,27 @@ public class PatientController {
     }
 
     @DeleteMapping("/patient/{patientId}")
-    private void deletePatient(@PathVariable("patientId") Integer patientId)
-    {
-        patientService.delete(patientId);
+    private ResponseEntity deletePatient(@PathVariable("patientId") Integer patientId) {
+        ResponseEntity response = null;
+
+        if(patientId==null){
+            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            patientService.delete(patientId);
+            response = new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+
+        return response;
     }
 
-    @PostMapping("/patients")
-    private int savePatient(@RequestBody Patient patient)
+    @PostMapping("/patient")
+    private Patient savePatient(@RequestBody Patient patient)
     {
         patientService.saveOrUpdate(patient);
-        return patient.getId();
+        return patient;
     }
 
-    @PutMapping("patients")
+    @PutMapping("/patient")
     private Patient update(@RequestBody Patient patient)
     {
         patientService.saveOrUpdate(patient);

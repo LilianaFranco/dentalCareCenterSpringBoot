@@ -20,6 +20,9 @@ public class Dentist {
     @Column
     private String name;
 
+    //Constructor vacio
+    public Dentist() { }
+
     //Constructor
     public Dentist(int id, int dentalLicense, String lastName, String name) {
         this.id = id;
@@ -27,9 +30,6 @@ public class Dentist {
         this.lastName = lastName;
         this.name = name;
     }
-
-    //Constructor vacio
-    public Dentist() { }
 
     //Getters and Setters
 

@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
 
 @Entity
 @Table
@@ -19,12 +18,12 @@ public class Patient {
     @Column
     private String Lastname;
     @Column
+
     private String name;
     @Column
     private String address;
-    @Column
-    private LocalDate registrationDate;
 
+    //Constructor vacio
     public Patient(){}
 
     //Constructor
@@ -34,7 +33,6 @@ public class Patient {
         Lastname = lastname;
         this.name = name;
         this.address = address;
-        this.registrationDate = LocalDate.now();
     }
 
     //Getters and Setters
@@ -81,14 +79,6 @@ public class Patient {
         return idCard;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
     //Methods
 
     @Override
@@ -99,7 +89,6 @@ public class Patient {
                 ", Lastname='" + Lastname + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", registrationDate=" + registrationDate +
                 '}';
     }
 }

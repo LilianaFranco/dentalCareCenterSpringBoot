@@ -19,7 +19,6 @@ public class DentistService {
         dentistRepository.findAll().forEach(dentist1 -> dentists.add(dentist1));
         return dentists;
     }
-
     public Dentist getDentistById(Integer id){
         return dentistRepository.findById(id).get();
     }
