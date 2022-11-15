@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -18,25 +17,28 @@ public class Patient {
     @Column
     private int idCard;
     @Column
-    private String Lastname;
+    private String lastName;
     @Column
-
     private String name;
     @Column
     private String address;
+    @Column
+    private Date registrationDate;
 
     //Constructor vacio
     public Patient(){}
 
     //Constructor
-    public Patient(Integer id, int idCard, String lastname, String name, String address) {
+
+    public Patient(Integer id, int idCard, String lastName, String name, String address, Date registrationDate) {
         this.id = id;
         this.idCard = idCard;
-        Lastname = lastname;
+        this.lastName = lastName;
         this.name = name;
         this.address = address;
-
+        this.registrationDate = registrationDate;
     }
+
 
     //Getters and Setters
     public Integer getId() {
@@ -44,22 +46,23 @@ public class Patient {
     }
 
     public void setId(Integer id) {
-        id = id;
+        this.id = id;
     }
 
-    public int getIdCard(){
+    public int getIdCard() {
         return idCard;
     }
+
     public void setIdCard(int idCard) {
         this.idCard = idCard;
     }
 
-    public String getLastname() {
-        return Lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        Lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getName() {
@@ -78,20 +81,28 @@ public class Patient {
         this.address = address;
     }
 
-    public int getIdNumber() {
-        return idCard;
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+
     //Methods
+
 
     @Override
     public String toString() {
         return "Patient{" +
                 "id=" + id +
                 ", idCard=" + idCard +
-                ", Lastname='" + Lastname + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
+                ", registrationDate=" + registrationDate +
                 '}';
     }
 }
+
