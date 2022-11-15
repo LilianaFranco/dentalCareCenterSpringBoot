@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table
@@ -33,6 +35,7 @@ public class Patient {
         Lastname = lastname;
         this.name = name;
         this.address = address;
+
     }
 
     //Getters and Setters

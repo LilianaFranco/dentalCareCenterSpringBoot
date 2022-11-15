@@ -23,7 +23,7 @@ public class DentistService {
         return dentistRepository.findById(id).get();
     }
 
-    public void saveOrUpdate(Dentist dentist)
+    public void save(Dentist dentist)
     {
         dentistRepository.save(dentist);
     }

@@ -15,23 +15,17 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    @GetMapping("/hi-patient")
-    public String WelcomeDentist(){
-        String hello = "Welcome, dear patient";
-        return hello;
-    }
-
-    @GetMapping("/patients")
+    @GetMapping("/allPatients")
     private List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }
 
-    @GetMapping("/patient/{patientId}")
+    @GetMapping("/{patientId}")
     private Patient getPatient(@PathVariable("patientId") Integer patientId) {
         return patientService.getPatientById(patientId);
     }
 
-    @DeleteMapping("/patient/{patientId}")
+    @DeleteMapping("/{patientId}")
     private ResponseEntity deletePatient(@PathVariable("patientId") Integer patientId) {
         ResponseEntity response = null;
 
@@ -45,17 +39,17 @@ public class PatientController {
         return response;
     }
 
-    @PostMapping("/patient")
+    @PostMapping("/")
     private Patient savePatient(@RequestBody Patient patient)
     {
-        patientService.saveOrUpdate(patient);
+        patientService.save(patient);
         return patient;
     }
 
     @PutMapping("/patient")
     private Patient update(@RequestBody Patient patient)
     {
-        patientService.saveOrUpdate(patient);
+        patientService.save(patient);
         return patient;
     }
 }

@@ -23,7 +23,7 @@ public class PatientService {
         return patientRepository.findById(id).get();
     }
 
-    public void saveOrUpdate(Patient patient)
+    public void save(Patient patient)
     {
         patientRepository.save(patient);
     }
